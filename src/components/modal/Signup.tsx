@@ -67,6 +67,7 @@ const Signup = ({ show, setShow, onSignup }: SignupProps) => {
   // Handle form submission
   const onSubmit = (data: SignupFormData) => {
     const { ...registerData } = data;
+    localStorage.setItem("email", data.email)
     registerMutation.mutate(registerData);
   };
 
@@ -78,7 +79,7 @@ const Signup = ({ show, setShow, onSignup }: SignupProps) => {
         setShow(false); // Close signup modal after successful verification
         queryClient.invalidateQueries({ queryKey: ['currentUser'] });
       },
-    }).mutate({ otp });
+    }).mutate({ otp, email: localStorage.getItem("email") });
   };
 
   return (

@@ -143,7 +143,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
       {/* Render Login Modal */}
       {show && <Login show={show} setShow={setShow} />}
 
-      <main className="pt-20 flex-grow">{children}</main>
+      <main className="pt-20 flex-grow flex justify-center items-center flex-col">{children}</main>
 
       <footer className="footer bg-base-200 text-base-content p-10">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">

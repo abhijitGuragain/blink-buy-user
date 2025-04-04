@@ -29,17 +29,19 @@ interface LoginCredentials {
 
 interface RegisterCredentials {
   email: string;
-  password: string;
-  username?: string;
+  // password: string;
+  // username?: string;
 }
 
 interface AuthResponse {
+  otp: string;
   access_token: string;
   refresh_token?: string;
   user: User;
 }
 
 interface VerifyOtpRequest {
+  email: string | null;
   otp: string;
 }
 
@@ -117,10 +119,7 @@ export const useVerifyOtp = (
 ) => {
   return useMutation({
     mutationFn: async (otpData: VerifyOtpRequest) => {
-      const response = await apiClient.post<AuthResponse>(
-        "/verify-otp/",
-        otpData
-      );
+      const response = await apiClient.post<AuthResponse>("/verify/", otpData);
       setAuthTokens(response.data);
       return response.data;
     },

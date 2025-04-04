@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Button from '../Button';
-// import { authService } from '../../services/authService'; // Import authService
 import { useQueryClient } from '@tanstack/react-query';
 import { authService } from '../../services/AuthService';
 
@@ -14,9 +13,10 @@ interface VerifyOtpProps {
   show: boolean;
   setShow: (show: boolean) => void;
   onVerify?: (otp: string) => void;
+  email?: string; // Add email as an optional prop
 }
 
-const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
+const VerifyOtp = ({ show, setShow, onVerify, email }: VerifyOtpProps) => {
   const queryClient = useQueryClient();
   const {
     control,
@@ -47,7 +47,6 @@ const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
     },
     onError: (error) => {
       console.error('OTP verification failed:', error.response?.data.message);
-      // Optionally reset form or show error message
     },
   });
 
@@ -78,13 +77,13 @@ const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
   // Handle form submission
   const onSubmit = (data: OtpFormData) => {
     const otp = data.otp.join('');
-    verifyOtpMutation.mutate({ otp });
+    const emailToSend = email || localStorage.getItem('email') || ''; // Use prop or fallback to localStorage
+    verifyOtpMutation.mutate({ otp, email: emailToSend }); // Include email in the payload
   };
 
-  // Handle resend OTP (you might need to adjust this based on your API)
+  // Handle resend OTP
   const handleResendOtp = () => {
-    // Assuming there's an endpoint to resend OTP
-    // This is a placeholder - adjust according to your backend
+    const emailToResend = email || localStorage.getItem('email') || '';
     authService.useRegister({
       onSuccess: () => {
         setTimeLeft(300); // Reset timer
@@ -95,13 +94,7 @@ const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
         console.error('Failed to resend OTP:', error.response?.data.message);
       },
     }).mutate({
-      // You might need to pass the same data used in signup
-      // This depends on your backend requirements
-      email: localStorage.getItem('pendingEmail') || '', // Example: store email temporarily
-      password: '',
-      firstName: '',
-      lastName: '',
-      phone: '',
+      email: emailToResend,
     });
   };
 
@@ -174,8 +167,7 @@ const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
           <div className="mt-3 flex gap-4 justify-center items-center">
             <span>OTP valid till:</span>
             <span
-              className={`countdown font-mono text-lg ${timeLeft <= 30 ? 'text-error' : 'text-base-content'
-                }`}
+              className={`countdown font-mono text-lg ${timeLeft <= 30 ? 'text-error' : 'text-base-content'}`}
             >
               {formatTime(timeLeft)}
             </span>
@@ -231,8 +223,7 @@ const VerifyOtp = ({ show, setShow, onVerify }: VerifyOtpProps) => {
             Didn't receive a code?{' '}
             <button
               type="button"
-              className={`font-medium hover:underline ${timeLeft <= 0 ? 'text-primary' : 'text-base-content/50 pointer-events-none'
-                }`}
+              className={`font-medium hover:underline ${timeLeft <= 0 ? 'text-primary' : 'text-base-content/50 pointer-events-none'}`}
               disabled={timeLeft > 0}
               onClick={handleResendOtp}
             >
