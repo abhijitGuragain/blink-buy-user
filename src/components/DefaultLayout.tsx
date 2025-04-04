@@ -145,7 +145,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
 
       <main className="pt-20 flex-grow flex justify-center items-center flex-col">{children}</main>
 
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-base-200 text-base-content p-10 mt-10">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h2 className="footer-title text-lg font-bold">BlinkBuy</h2>
@@ -163,6 +163,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             <h2 className="footer-title">Support</h2>
             <ul className="space-y-2">
               <li><a href="/faq" className="link link-hover">FAQ</a></li>
+              <li><a href="/about-us" className="link link-hover">About Us</a></li>
               <li><a href="/contact" className="link link-hover">Contact Us</a></li>
               <li><a href="/returns" className="link link-hover">Returns</a></li>
             </ul>
