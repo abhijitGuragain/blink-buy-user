@@ -1,5 +1,6 @@
 // Card.tsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Define the shape of the product prop
 interface Product {
@@ -17,9 +18,11 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ product }) => {
+
+  const navigate = useNavigate();
   return (
     <>
-      <div className="card bg-base-200 w-96 shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div className="card bg-base-200 w-96 shadow-md hover:shadow-lg transition-shadow duration-300" onClick={() => navigate("/product-details")}>
         {/* Discount Badge */}
         {product.originalPrice > product.price && (
           <div className="badge badge-secondary absolute top-2 left-2">

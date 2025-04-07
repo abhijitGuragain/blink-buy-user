@@ -9,6 +9,7 @@ import FAQ from "./pages/FAQ"
 import Categories from "./pages/Categories"
 import Deals from "./pages/Deals"
 import Profile from "./pages/Profile"
+import Cart from "./pages/Cart"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/product-details" element={<ProductDetail />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/deals" element={<Deals />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about-us" element={<About />} />
             <Route path="/contact" element={<Contact />} />

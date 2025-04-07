@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Login from './modal/Login'; // Adjust the import path
+import { useNavigate } from 'react-router-dom';
 
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const user = {
-    isLoggedIn: false, // Toggle this to test logged-in/logged-out states
+    isLoggedIn: true, // Toggle this to test logged-in/logged-out states
     firstName: 'John',
     lastName: 'Doe',
   };
@@ -103,7 +105,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
                 <span className="font-bold text-lg">8 Items</span>
                 <span className="text-info">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">View Cart</button>
+                  <button className="btn btn-primary btn-block" onClick={() => navigate("/cart")}>View Cart</button>
                   <button className="btn btn-outline btn-block">Checkout</button>
                 </div>
               </div>

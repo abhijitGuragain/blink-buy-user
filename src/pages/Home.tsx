@@ -49,7 +49,7 @@ const Home = () => {
                 <p className="py-6 text-lg text-base-content/80">
                   Your one-stop shop for the latest trends. Fast shipping, unbeatable prices!
                 </p>
-                <button className="btn btn-primary btn-lg rounded-full" onClick={() => navigate('/products')}>
+                <button className="btn btn-primary btn-lg" onClick={() => navigate('/products')}>
                   Start Shopping
                 </button>
               </div>

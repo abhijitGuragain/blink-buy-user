@@ -23,7 +23,7 @@ const About = () => {
           <div className="hero">
             <div className="hero-content flex-col lg:flex-row gap-8">
               <img
-                src="https://i.pinimg.com/736x/3b/09/b6/3b09b6cf5b2f46372baaf00dcc2a81d7.jpg"
+                src="https://i.pinimg.com/736x/b7/54/1e/b7541e05591cf263dd211ef7903ae2a4.jpg"
                 alt="BlinkBuy Marketplace"
                 className="max-w-sm rounded-lg shadow-2xl"
               />
