@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';
 import DefaultLayout from '../components/DefaultLayout';
 
@@ -33,10 +34,11 @@ const products = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <DefaultLayout>
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-r from-base-200 to-base-300 py-16 mb-12">
+      <section className="w-full bg-gradient-to-r from-base-200 to-base-300 mt-12 py-16 mb-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="hero min-h-[400px] rounded-xl overflow-hidden bg-base-100 shadow-xl">
             <div className="hero-content flex-col lg:flex-row gap-8">
@@ -47,13 +49,13 @@ const Home = () => {
                 <p className="py-6 text-lg text-base-content/80">
                   Your one-stop shop for the latest trends. Fast shipping, unbeatable prices!
                 </p>
-                <button className="btn btn-primary btn-lg rounded-full">
+                <button className="btn btn-primary btn-lg rounded-full" onClick={() => navigate('/products')}>
                   Start Shopping
                 </button>
               </div>
               <div className="relative w-full max-w-sm lg:max-w-md">
                 <img
-                  src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                  src="https://i.pinimg.com/736x/b7/54/1e/b7541e05591cf263dd211ef7903ae2a4.jpg"
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                   alt="BlinkBuy Hero"
                 />
@@ -74,7 +76,7 @@ const Home = () => {
           ))}
         </div>
         <div className="text-center mt-12">
-          <button className="btn btn-outline btn-primary btn-wide rounded-full">
+          <button className="btn btn-outline btn-primary btn-wide rounded-full" onClick={() => navigate("/products")}>
             Explore All Products
           </button>
         </div>
@@ -103,7 +105,7 @@ const Home = () => {
           ].map((category) => (
             <div
               key={category.name}
-              className="card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 rounded-lg overflow-hidden"
+              className="card bg-base-200 shadow-md hover:shadow-xl transition-all duration-300 rounded-lg overflow-hidden"
             >
               <figure className="relative h-48">
                 <img
@@ -114,7 +116,7 @@ const Home = () => {
               </figure>
               <div className="card-body text-center p-4">
                 <h3 className="card-title justify-center text-xl">{category.name}</h3>
-                <button className="btn btn-ghost text-primary hover:bg-primary/10">
+                <button className="btn btn-ghost text-primary hover:bg-primary/10" onClick={() => navigate("/categories")}>
                   Shop Now
                 </button>
               </div>

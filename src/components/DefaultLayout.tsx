@@ -50,7 +50,9 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
             </ul>
           </div>
           <a href="/" className="btn btn-ghost text-3xl font-bold">
-            Blink<span className='text-primary'>Buy</span>
+            <span>
+              Blink<span className='text-primary'>Buy</span>
+            </span>
           </a>
         </div>
 

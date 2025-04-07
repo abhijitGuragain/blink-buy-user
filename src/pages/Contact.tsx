@@ -37,7 +37,7 @@ const Contact = () => {
 
   return (
     <DefaultLayout>
-      <div className="min-h-screen bg-base-200 py-16">
+      <div className="min-h-screen bg-base-200 w-full mt-7 py-16">
         {/* Header */}
         <section className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h1 className="text-5xl font-bold text-primary mb-6">Contact Us</h1>
